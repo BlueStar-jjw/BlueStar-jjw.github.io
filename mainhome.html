@@ -7,17 +7,19 @@
     <title>clonetube homepage</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <style>
-        
         body {
             padding-top: 50px;
         }
 
         /* 브라우저 크기에 따른 디자인을 하기위해 미디어 쿼리 사용 */
-        @media (min-width: 992px) /* 브라우저 크기가 992px 이하일때 아래의 스타일 적용 */
-                                  /* 992px은 bootstrap에서 큰 장치의 표춘값 */
-        {
-            .sidebar-pc /* 큰 화면에서 사이드 바 스타일 */
+        @media (min-width: 992px)
+        /* 브라우저 크기가 992px 이하일때 아래의 스타일 적용 */
+        /* 992px은 bootstrap에서 큰 장치의 표춘값 */
             {
+            .sidebar-pc
+
+            /* 큰 화면에서 사이드 바 스타일 */
+                {
                 position: fixed;
                 top: 56px;
                 left: 0;
@@ -29,43 +31,49 @@
                 background-color: #f8f9fa;
                 border-right: 1px solid #e9ecef;
             }
+
             .main-content {
                 margin-left: 240px;
             }
         }
 
-        
-        .offcanvas     /* 작은 화면 전용 스타일 */
-        {
+
+        .offcanvas
+
+        /* 작은 화면 전용 스타일 */
+            {
             width: 240px;
         }
-        .offcanvas-body 
-        {
+
+        .offcanvas-body {
             padding-bottom: 20px;
         }
 
 
-        .sidebar-menu .nav-link,    /* 사이드 바 기본 스타일 */
-        .offcanvas-body .nav-link 
-        {
+        .sidebar-menu .nav-link,
+        /* 사이드 바 기본 스타일 */
+        .offcanvas-body .nav-link {
             padding: 8px 16px;
             color: #212529;
             display: flex;
             align-items: center;
         }
 
-        .sidebar-menu .nav-link:hover,   /* 마우스 포인터가 올라가 있는 메뉴 회색배경처리 */
+        .sidebar-menu .nav-link:hover,
+        /* 마우스 포인터가 올라가 있는 메뉴 회색배경처리 */
         .offcanvas-body .nav-link:hover {
             background-color: #e9ecef;
         }
 
-        .sidebar-menu .nav-link.active, /* 선택된 메뉴 강조 처리 */
+        .sidebar-menu .nav-link.active,
+        /* 선택된 메뉴 강조 처리 */
         .offcanvas-body .nav-link.active {
             background-color: #f0f0f0;
             font-weight: bold;
         }
 
-        .sidebar-menu h6, /* 사이드 바 소 제목 스타일 */
+        .sidebar-menu h6,
+        /* 사이드 바 소 제목 스타일 */
         .offcanvas-body h6 {
             margin-top: 15px;
             margin-bottom: 5px;
@@ -73,7 +81,60 @@
             color: #606060;
             font-size: 0.9rem;
         }
+
+        .video .thumbnail {
+            /* 영상 썸네일 스타일 */
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .video .video-info {
+            display: flex; /* 요소들을 가로로 배치하기 */
+            margin-top: 12px;
+        }
+
+        .video .text-content {
+            flex-grow: 1;
+            /* 남은 공간을 채우도록 */
+        }
+
+        .video .video-title {
+            /* 영상 제목 스타일 */
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 1.3;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-height: 2.6em; /* 두 줄로 제한  */
+        }
+
+        .video .channel-profile {
+            /* 영상 채널 프로필 스타일 */
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            margin-right: 12px;
+            flex-shrink: 0;
+            /* 컨텐츠가 줄어들 때 크기가 줄어들지 않도록 */
+        }
+
+        .video .more-options {
+            /* 영상 더보기 아이콘 스타일 */
+            font-size: 20px;
+            color: #606060;
+            margin-left: 8px;
+            cursor: pointer;
+            align-self: flex-start;
+        }
+        .video .channel-name,
+        .video .video-meta { /* 채널명과 메타 정보 스타일 추가 */
+        font-size: 0.85rem;
+        color: #606060;
+        margin-bottom: 2px; /* 메타 데이터 라인 간격 조절 */
+    }
     </style>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
@@ -82,7 +143,8 @@
             <div class="d-flex align-items-center">
                 <button class="btn btn-light me-2 d-lg-none" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#sidebarMenu" aria-controls="sidebarMenu">☰</button> <!-- 햄버거 메뉴 아이콘 속서ㅇ -->
-                <a class="navbar-brand d-flex align-items-center" href="#" onclick="location.reload(); return false;"> <!-- 로고 클릭시 리로드 -->
+                <a class="navbar-brand d-flex align-items-center" href="#" onclick="location.reload(); return false;">
+                    <!-- 로고 클릭시 리로드 -->
                     <img src="image.png" alt="YouTube Logo" class="img-fluid d-inline-block align-text-top me-1"
                         style="height: 30px" />
                 </a>
@@ -103,7 +165,7 @@
                     알림
                 </button>
                 <button class="btn btn-light" type="button">
-                    <img src="" alt="사용자아이콘" class="rounded-circle" width="32" height="32" />
+                    <img src="userprofile.png" alt="사용자아이콘" class="rounded-circle" width="32" height="32" />
                 </button>
             </div>
         </div>
@@ -448,6 +510,172 @@
             </div>
         </div>
     </nav>
+    <main class="main-content">
+        <div class="container-fluid py-4">
+            <div class="row">
+                <div class="col-12 col-sm-6 col-lg-4 mb-4">
+                    <div class="video">
+                        <img src="whatis.png" class="img-fluid thumbnail" alt="동영상 썸네일 1">
+                        <div class="video-info">
+                            <img src="동공이약사.png" class="channel-profile" alt="채널1 프로필">
+                            <div class="text-content">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <h5 class="video-title">도움을 줄 수 있음이 뭐예요?</h5>
+                                    <i class="material-icons more-options">more_vert</i>
+                                </div>
+                                <p class="channel-name">동공이 약사</p>
+                                <p class="video-meta">조회수 4.5만회 • 1개월 전</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4 mb-4">
+                    <div class="video">
+                        <img src="vibecoding.png"
+                            class="img-fluid thumbnail" alt="동영상 썸네일 2">
+                        <div class="video-info">
+                            <img src="코딩애플.png" class="channel-profile"
+                                alt="코딩애플">
+                            <div class="text-content">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <h5 class="video-title">솔직히 바이브코딩 좋은듯</h5>
+                                    <i class="material-icons more-options">more_vert</i>
+                                </div>
+                                <p class="channel-name">코딩애플</p>
+                                <p class="video-meta">조회수 16만회 • 2주 전</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4 mb-4">
+                    <div class="video">
+                        <img src="changepw.png"
+                            class="img-fluid thumbnail" alt="동영상 썸네일 3">
+                        <div class="video-info">
+                            <img src="코딩애플.png" class="channel-profile"
+                                alt="채널3 프로필">
+                            <div class="text-content">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <h5 class="video-title">한국에만 있는 이상한 비밀번호 관리법</h5>
+                                    <i class="material-icons more-options">more_vert</i>
+                                </div>
+                                <p class="channel-name">코딩애플</p>
+                                <p class="video-meta">조회수 15만회 • 1개월 전</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4 mb-4">
+                    <div class="video">
+                        <img src="keroro.png"
+                            class="img-fluid thumbnail" alt="동영상 썸네일 4">
+                        <div class="video-info">
+                            <img src="추추.png" class="channel-profile"
+                                alt="채널4 프로필">
+                            <div class="text-content">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <h5 class="video-title">케로로 소대원들의 약빤 골프실력</h5>
+                                    <i class="material-icons more-options">more_vert</i>
+                                </div>
+                                <p class="channel-name">추추</p>
+                                <p class="video-meta">조회수 8.9만회 • 5개월 전</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4 mb-4">
+                    <div class="video">
+                        <img src="babkimkuk.png"
+                            class="img-fluid thumbnail" alt="동영상 썸네일 5">
+                        <div class="video-info">
+                            <img src="마소킴.png" class="channel-profile"
+                                alt="채널5 프로필">
+                            <div class="text-content">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <h5 class="video-title">장어 덮밥을 심층으로 분석 해봤습니다. 이 영상을 보면 당신도 장어덮밥김국이 될 수 있습니다.</h5>
+                                    <i class="material-icons more-options">more_vert</i>
+                                </div>
+                                <p class="channel-name">마법소년 김셰프</p>
+                                <p class="video-meta">조회수 5만회 • 4개월 전</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4 mb-4">
+                    <div class="video">
+                        <img src="바퀴.png"
+                            class="img-fluid thumbnail" alt="동영상 썸네일 6">
+                        <div class="video-info">
+                            <img src="쩔템.png" class="channel-profile"
+                                alt="채널6 프로필">
+                            <div class="text-content">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <h5 class="video-title">바퀴 때문에 사람이 도망간 집!! 바퀴벌레 서식지 파괴 했습니다.</h5>
+                                    <i class="material-icons more-options">more_vert</i>
+                                </div>
+                                <p class="channel-name">국가대표 쩔템</p>
+                                <p class="video-meta">조회수 65만회 • 4개월 전</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4 mb-4">
+                    <div class="video">
+                        <img src="nenmaster.png"
+                            class="img-fluid thumbnail" alt="동영상 썸네일 7">
+                        <div class="video-info">
+                            <img src="옥선생.png" class="channel-profile"
+                                alt="채널7 프로필">
+                            <div class="text-content">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <h5 class="video-title">아무튼 자무기 먹었습니다!!! 세팅 갑니다!!!</h5>
+                                    <i class="material-icons more-options">more_vert</i>
+                                </div>
+                                <p class="channel-name">옥선생</p>
+                                <p class="video-meta">조회수 4.8만회 • 2개월 전</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4 mb-4">
+                    <div class="video">
+                        <img src="입질썸네일1.png"
+                            class="img-fluid thumbnail" alt="동영상 썸네일 8">
+                        <div class="video-info">
+                            <img src="입질의추억.png" class="channel-profile"
+                                alt="채널8 프로필">
+                            <div class="text-content">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <h5 class="video-title">몰라서 안 사먹었더니 가격이 박살나고 있는 여름 보양식</h5>
+                                    <i class="material-icons more-options">more_vert</i>
+                                </div>
+                                <p class="channel-name">입질의추억TV</p>
+                                <p class="video-meta">조회수 48만회 • 13일 전</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4 mb-4">
+                    <div class="video">
+                        <img src="enmeat.png"
+                            class="img-fluid thumbnail" alt="동영상 썸네일 9">
+                        <div class="video-info">
+                            <img src="meatman.png" class="channel-profile"
+                                alt="채널9 프로필">
+                            <div class="text-content">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <h5 class="video-title">영국 육식 탐방기 : 억지 괴식 말고 "진짜" 영국의 맛</h5>
+                                    <i class="material-icons more-options">more_vert</i>
+                                </div>
+                                <p class="channel-name">육식맨 YOOXICMAN</p>
+                                <p class="video-meta">조회수 153만회 • 6개월 전</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
