@@ -87,6 +87,11 @@
             width: 100%;
             height: auto;
             border-radius: 8px;
+            transition: transform 0.3s ease-in-out; /* 0.3초 동안 부드럽게 변환 */
+            transform-origin: center center; /* 중앙을 기준으로 확대 */
+        }
+        .video .thumbnail:hover {
+            transform: scale(1.05); /* 마우스 호버 시 1.05배 확대 */
         }
 
         .video .video-info {
