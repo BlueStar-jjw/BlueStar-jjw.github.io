@@ -90,7 +90,8 @@
         }
 
         .video .video-info {
-            display: flex; /* 요소들을 가로로 배치하기 */
+            display: flex;
+            /* 요소들을 가로로 배치하기 */
             margin-top: 12px;
         }
 
@@ -106,7 +107,8 @@
             line-height: 1.3;
             overflow: hidden;
             text-overflow: ellipsis;
-            max-height: 2.6em; /* 두 줄로 제한  */
+            max-height: 2.6em;
+            /* 두 줄로 제한  */
         }
 
         .video .channel-profile {
@@ -127,12 +129,15 @@
             cursor: pointer;
             align-self: flex-start;
         }
+
         .video .channel-name,
-        .video .video-meta { /* 채널명과 메타 정보 스타일 추가 */
-        font-size: 0.85rem;
-        color: #606060;
-        margin-bottom: 2px; /* 메타 데이터 라인 간격 조절 */
-    }
+        .video .video-meta {
+            /* 채널명과 메타 정보 스타일 추가 */
+            font-size: 0.85rem;
+            color: #606060;
+            margin-bottom: 2px;
+            /* 메타 데이터 라인 간격 조절 */
+        }
     </style>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
@@ -164,9 +169,74 @@
                 <button class="btn btn-light d-block" type="button">
                     알림
                 </button>
-                <button class="btn btn-light" type="button">
-                    <img src="userprofile.png" alt="사용자아이콘" class="rounded-circle" width="32" height="32" />
-                </button>
+                <div class="d-flex align-items-center ms-auto">
+                    <div class="dropdown">
+                        <button class="btn btn-light " type="button" id="userDropdownMenuButton"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="userprofile.png" alt="사용자 아이콘" class="rounded-circle" width="32" height="32" />
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdownMenuButton">
+                            <li class="dropdown-item-text d-flex align-items-center">
+                                <img src="userprofile.png" alt="사용자 프로필" class="rounded-circle me-3" width="32"
+                                    height="32" />
+                                <div>
+                                    <h6 class="mb-0">BlueStar</h6>
+                                    <small class="text-muted">@BlueStar-mn8ns</small>
+                                    <br>
+                                    <a href="#" class="text-decoration-none">내 채널 보기</a>
+                                </div>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#"><i class="material-icons me-2">account_circle</i>
+                                    Google 계정</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="material-icons me-2">swap_horiz</i> 계정
+                                    전환</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="material-icons me-2">logout</i> 로그아웃</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#"><i class="material-icons me-2">play_circle_outline</i>
+                                    YouTube 스튜디오</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="material-icons me-2">workspace_premium</i> 내
+                                    Premium 혜택</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="material-icons me-2">payments</i> 구매 항목 및
+                                    멤버십</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#"><i class="material-icons me-2">manage_accounts</i>
+                                    YouTube의 내 데이터</a></li>
+                            <li><a class="dropdown-item d-flex justify-content-between align-items-center" href="#"><i
+                                        class="material-icons me-2">dark_mode</i> 디자인: 기기 테마 <i
+                                        class="material-icons ms-auto">chevron_right</i></a></li>
+                            <li><a class="dropdown-item d-flex justify-content-between align-items-center" href="#"><i
+                                        class="material-icons me-2">language</i> 언어: 한국어 <i
+                                        class="material-icons ms-auto">chevron_right</i></a></li>
+                            <li><a class="dropdown-item d-flex justify-content-between align-items-center" href="#"><i
+                                        class="material-icons me-2">gpp_maybe</i> 제한 모드: 사용 안함 <i
+                                        class="material-icons ms-auto">chevron_right</i></a></li>
+                            <li><a class="dropdown-item d-flex justify-content-between align-items-center" href="#"><i
+                                        class="material-icons me-2">location_on</i> 위치: 한국 <i
+                                        class="material-icons ms-auto">chevron_right</i></a></li>
+                            <li><a class="dropdown-item" href="#"><i class="material-icons me-2">keyboard</i> 단축키</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#"><i class="material-icons me-2">settings</i> 설정</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#"><i class="material-icons me-2">help</i> 고객센터</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="material-icons me-2">feedback</i> 의견 보내기</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -531,11 +601,9 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 mb-4">
                     <div class="video">
-                        <img src="vibecoding.png"
-                            class="img-fluid thumbnail" alt="동영상 썸네일 2">
+                        <img src="vibecoding.png" class="img-fluid thumbnail" alt="동영상 썸네일 2">
                         <div class="video-info">
-                            <img src="코딩애플.png" class="channel-profile"
-                                alt="코딩애플">
+                            <img src="코딩애플.png" class="channel-profile" alt="코딩애플">
                             <div class="text-content">
                                 <div class="d-flex justify-content-between align-items-start">
                                     <h5 class="video-title">솔직히 바이브코딩 좋은듯</h5>
@@ -549,11 +617,9 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 mb-4">
                     <div class="video">
-                        <img src="changepw.png"
-                            class="img-fluid thumbnail" alt="동영상 썸네일 3">
+                        <img src="changepw.png" class="img-fluid thumbnail" alt="동영상 썸네일 3">
                         <div class="video-info">
-                            <img src="코딩애플.png" class="channel-profile"
-                                alt="채널3 프로필">
+                            <img src="코딩애플.png" class="channel-profile" alt="채널3 프로필">
                             <div class="text-content">
                                 <div class="d-flex justify-content-between align-items-start">
                                     <h5 class="video-title">한국에만 있는 이상한 비밀번호 관리법</h5>
@@ -567,11 +633,9 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 mb-4">
                     <div class="video">
-                        <img src="keroro.png"
-                            class="img-fluid thumbnail" alt="동영상 썸네일 4">
+                        <img src="keroro.png" class="img-fluid thumbnail" alt="동영상 썸네일 4">
                         <div class="video-info">
-                            <img src="추추.png" class="channel-profile"
-                                alt="채널4 프로필">
+                            <img src="추추.png" class="channel-profile" alt="채널4 프로필">
                             <div class="text-content">
                                 <div class="d-flex justify-content-between align-items-start">
                                     <h5 class="video-title">케로로 소대원들의 약빤 골프실력</h5>
@@ -585,11 +649,9 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 mb-4">
                     <div class="video">
-                        <img src="babkimkuk.png"
-                            class="img-fluid thumbnail" alt="동영상 썸네일 5">
+                        <img src="babkimkuk.png" class="img-fluid thumbnail" alt="동영상 썸네일 5">
                         <div class="video-info">
-                            <img src="마소킴.png" class="channel-profile"
-                                alt="채널5 프로필">
+                            <img src="마소킴.png" class="channel-profile" alt="채널5 프로필">
                             <div class="text-content">
                                 <div class="d-flex justify-content-between align-items-start">
                                     <h5 class="video-title">장어 덮밥을 심층으로 분석 해봤습니다. 이 영상을 보면 당신도 장어덮밥김국이 될 수 있습니다.</h5>
@@ -603,11 +665,9 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 mb-4">
                     <div class="video">
-                        <img src="바퀴.png"
-                            class="img-fluid thumbnail" alt="동영상 썸네일 6">
+                        <img src="바퀴.png" class="img-fluid thumbnail" alt="동영상 썸네일 6">
                         <div class="video-info">
-                            <img src="쩔템.png" class="channel-profile"
-                                alt="채널6 프로필">
+                            <img src="쩔템.png" class="channel-profile" alt="채널6 프로필">
                             <div class="text-content">
                                 <div class="d-flex justify-content-between align-items-start">
                                     <h5 class="video-title">바퀴 때문에 사람이 도망간 집!! 바퀴벌레 서식지 파괴 했습니다.</h5>
@@ -621,11 +681,9 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 mb-4">
                     <div class="video">
-                        <img src="nenmaster.png"
-                            class="img-fluid thumbnail" alt="동영상 썸네일 7">
+                        <img src="nenmaster.png" class="img-fluid thumbnail" alt="동영상 썸네일 7">
                         <div class="video-info">
-                            <img src="옥선생.png" class="channel-profile"
-                                alt="채널7 프로필">
+                            <img src="옥선생.png" class="channel-profile" alt="채널7 프로필">
                             <div class="text-content">
                                 <div class="d-flex justify-content-between align-items-start">
                                     <h5 class="video-title">아무튼 자무기 먹었습니다!!! 세팅 갑니다!!!</h5>
@@ -639,11 +697,9 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 mb-4">
                     <div class="video">
-                        <img src="입질썸네일1.png"
-                            class="img-fluid thumbnail" alt="동영상 썸네일 8">
+                        <img src="입질썸네일1.png" class="img-fluid thumbnail" alt="동영상 썸네일 8">
                         <div class="video-info">
-                            <img src="입질의추억.png" class="channel-profile"
-                                alt="채널8 프로필">
+                            <img src="입질의추억.png" class="channel-profile" alt="채널8 프로필">
                             <div class="text-content">
                                 <div class="d-flex justify-content-between align-items-start">
                                     <h5 class="video-title">몰라서 안 사먹었더니 가격이 박살나고 있는 여름 보양식</h5>
@@ -657,11 +713,9 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 mb-4">
                     <div class="video">
-                        <img src="enmeat.png"
-                            class="img-fluid thumbnail" alt="동영상 썸네일 9">
+                        <img src="enmeat.png" class="img-fluid thumbnail" alt="동영상 썸네일 9">
                         <div class="video-info">
-                            <img src="meatman.png" class="channel-profile"
-                                alt="채널9 프로필">
+                            <img src="meatman.png" class="channel-profile" alt="채널9 프로필">
                             <div class="text-content">
                                 <div class="d-flex justify-content-between align-items-start">
                                     <h5 class="video-title">영국 육식 탐방기 : 억지 괴식 말고 "진짜" 영국의 맛</h5>
