@@ -5,7 +5,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>clonetube homepage</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <style>
@@ -13,6 +12,378 @@
             padding-top: 50px;
             font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
         }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            flex: 1;
+            min-width: 0;
+        }
+
+        /* 우측 사이드 바 구역 */
+
+        @media (max-width: 1000px) {
+            .sidebar {
+                display: none;
+            }
+        }
+
+        .sidebar {
+            margin-left: -20px;
+            width: 400px;
+            flex-shrink: 0;
+            background-color: white;
+            border-radius: 12px;
+            padding: 5px;
+            height: fit-content;
+        }
+
+        .sidebar .video-list {
+            max-width: 100%;
+        }
+
+        .sidebar .video-item {
+            display: flex;
+            gap: 8px;
+            border-radius: 8px;
+            height: 50px;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .sidebar .thumbnail-container {
+            flex-shrink: 0;
+        }
+
+        .sidebar .thumbnail {
+            width: auto;
+            height: auto;
+            object-fit: cover;
+            border-radius: 8px;
+            background-color: #333;
+        }
+
+        .sidebar .video-info {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+
+        .sidebar .video-header {
+            margin-bottom: -14px;
+        }
+
+        .sidebar .video-title {
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.3;
+            color: black;
+            overflow: hidden;
+            padding-right: 32px;
+            margin: 0;
+        }
+
+        .sidebar .more-options {
+            font-weight: 900;
+            font-size: 26px;
+            background: none;
+            border: none;
+            color: black;
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 0 !important;
+            right: 0 !important;
+            z-index: 1;
+        }
+
+        .sidebar .video-meta {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar .channel-name {
+            font-size: 12px;
+            color: #705353;
+        }
+
+        .sidebar .video-stats {
+            font-size: 12px;
+            color: #705353;
+        }
+
+        /* 비디오 플레이어 구역 */
+        .video-section {
+            margin-bottom: 20px;
+        }
+
+        .video-player {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background-color: #f2f2f2;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .video-player iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* 영상 정보 구역 */
+        .video-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            gap: 20px;
+        }
+
+        .video-details {
+            flex: 1;
+        }
+
+        .video-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .channel-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .channel-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .channel-details h3 {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+
+        .channel-details .subscribers {
+            font-size: 12px;
+            color: black;
+        }
+
+        .video-meta {
+            font-size: 14px;
+            color: black;
+        }
+
+        /* 액션 버튼들 */
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .action-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background-color: #f2f2f2;
+            border: none;
+            border-radius: 18px;
+            color: black;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .action-btn:hover {
+            background-color: #808080;
+        }
+
+        .action-btn.liked {
+            background-color: #f2f2f2;
+        }
+
+        /* 영상 설명 구역 */
+        .video-description {
+            background-color: #f2f2f2;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 24px;
+        }
+
+        .description-header {
+            font-size: 14px;
+            font-weight: 600;
+            color: black;
+            margin-bottom: 8px;
+        }
+
+        .description-content {
+            font-size: 14px;
+            line-height: 1.4;
+            white-space: pre-line;
+        }
+
+        .description-toggle {
+            color: black;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        .description-toggle:hover {
+            color: black;
+        }
+
+        /* 댓글 구역 */
+        .comments-section {
+            margin-top: 24px;
+        }
+
+        .comments-header {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .comments-count {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .sort-button {
+            background: none;
+            border: none;
+            color: black;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .sort-button:hover {
+            color: black;
+        }
+
+        .comment-input {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .comment-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #9b59b6, #3498db);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .comment-form {
+            flex: 1;
+        }
+
+        .comment-form input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #3d3d3d;
+            color: black;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+
+        .comment-form input:focus {
+            outline: none;
+            border-bottom-color: #065fd4;
+        }
+
+        .comment-item {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .comment-content {
+            flex: 1;
+        }
+
+        .comment-author {
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .comment-time {
+            color: black;
+            font-size: 12px;
+            margin-left: 8px;
+        }
+
+        .comment-text {
+            font-size: 14px;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+
+        .comment-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .comment-actions button {
+            background: none;
+            border: none;
+            color: black;
+            font-size: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .comment-actions button:hover {
+            color: rgb(146, 125, 125);
+        }
+
+        .page-container {
+            display: flex;
+            gap: 24px;
+            max-width: 1920px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+
 
         /* 브라우저 크기에 따른 디자인을 하기위해 미디어 쿼리 사용 */
         @media (min-width: 992px)
@@ -31,7 +402,7 @@
                 width: 240px;
                 padding-top: 1rem;
                 overflow-y: auto;
-             
+                background-color: #f8f9fa;
                 border-right: 1px solid #e9ecef;
             }
 
@@ -130,7 +501,7 @@
             /* 영상 제목 스타일 */
             font-size: 1rem;
             font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-            font-weight: 530;
+            font-weight: 550;
             line-height: 1.3;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -275,18 +646,18 @@
             background: #d5d5d5;
         }
     </style>
-    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm">
         <div class="container-fluid d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center">
-                <button class="btn btn-light me-2 d-lg-none" type="button" data-bs-toggle="offcanvas"
+                <button class="btn btn-light me-2" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#sidebarMenu" aria-controls="sidebarMenu">☰</button>
                 <a class="navbar-brand d-flex align-items-center" href="#" onclick="location.reload(); return false;">
-                    <img src="YouTube_Premium_logo.png" alt="YouTube Logo" class="img-fluid d-inline-block align-text-top me-1"
-                        style="height: 20px" />
+                    <img src="YouTube_Premium_logo.png" alt="YouTube Logo"
+                        class="img-fluid d-inline-block align-text-top me-1" style="height: 20px" />
                 </a>
             </div>
 
@@ -312,17 +683,18 @@
 
             <div class="d-flex align-items-center">
                 <button class="btn btn-light d-block" type="button"
-                    style="background-color: #f0eaea; border-radius: 33px !important;width: auto !important;padding: 8px 16px !important;">
+                    style="background-color: white; border-radius: 33px !important;width: auto !important;padding: 8px 16px !important;">
                     <i class="material-icons" style="font-size: 19px;">add 만들기</i>
                 </button>
                 <button class="btn btn-light d-block" type="button"
-                    style="border-radius: 50% !important;width: 40px;height: 40px; display: flex !important;align-items: center;justify-content: center; padding: 0;">
+                    style="background-color: white; border-radius: 50% !important;width: 40px;height: 40px; display: flex !important;align-items: center;justify-content: center; padding: 0;">
                     <i class="material-icons">notifications</i>
                 </button>
-                <div class="d-flex align-items-center ms-auto">
+                <div class="d-flex align-items-center ms-auto" style="width: auto; height:auto;">
                     <div class="dropdown">
-                        <button class="btn btn-light " type="button" id="userDropdownMenuButton"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-light"
+                            style="border-radius: 50% !important; background-color: white; height: auto;" type="button"
+                            id="userDropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="userprofile.png" alt="사용자 아이콘" class="rounded-circle" width="32" height="32" />
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdownMenuButton">
@@ -391,7 +763,7 @@
         </div>
     </nav>
 
-    <div class="offcanvas offcanvas-start d-lg-none" id="sidebarMenu">
+    <div class="offcanvas offcanvas-start bg-light" id="sidebarMenu">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="sidebarMenuLabel">
                 <img src="YouTube_Premium_logo.png" alt="YouTube Logo" width="110" height="20"
@@ -402,7 +774,7 @@
         <div class="offcanvas-body sidebar-menu">
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link" href="mainhome.html">
+                    <a class="nav-link active" aria-current="page" href="mainhome.html">
                         <i class="material-icons me-2">home</i>
                         홈
                     </a>
@@ -414,7 +786,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="subscription.html">
+                    <a class="nav-link" href="subscription.html">
                         <i class="material-icons me-2">subscriptions</i>
                         구독
                     </a>
@@ -593,370 +965,135 @@
         </div>
     </div>
 
-    <nav class="sidebar-pc d-none d-lg-block">
-        <div class="sidebar-menu">
-            <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a class="nav-link" href="mainhome.html">
-                        <i class="material-icons me-2">home</i>
-                        홈
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="material-icons me-2">flash_on</i>
-                        Shorts
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="subscription.html">
-                        <i class="material-icons me-2">subscriptions</i>
-                        구독
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="material-icons me-2">library_music</i>
-                        YouTube Music
-                    </a>
-                </li>
-            </ul>
-            <hr>
-            <h6>내 페이지</h6>
-            <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="material-icons me-2">history</i>
-                        시청 기록
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="material-icons me-2">playlist_play</i>
-                        재생목록
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="material-icons me-2">video_library</i>
-                        내 동영상
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="material-icons me-2">watch_later</i>
-                        나중에 볼 동영상
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="material-icons me-2">thumb_up_alt</i>
-                        좋아요 표시한 동영상
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="material-icons me-2">file_download</i>
-                        오프라인 저장 동영상
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="material-icons me-2">content_cut</i>
-                        내 클립
-                    </a>
-                </li>
-            </ul>
-            <hr>
-            <h6>구독</h6>
-            <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="material-icons me-2">person_add</i>
-                        모든 구독
-                    </a>
-                </li>
-            </ul>
-            <hr>
-            <h6>탐색</h6>
-            <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="material-icons me-2">trending_up</i>
-                        인기 급상승
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="material-icons me-2">shopping_bag</i>
-                        쇼핑
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="material-icons me-2">music_note</i>
-                        음악
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="material-icons me-2">movie</i>
-                        영화
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="material-icons me-2">live_tv</i>
-                        실시간
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="material-icons me-2">sports_esports</i>
-                        게임
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="material-icons me-2">sports</i>
-                        스포츠
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="material-icons me-2">school</i>
-                        학습 프로그램
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="material-icons me-2">mic</i>
-                        팟캐스트
-                    </a>
-                </li>
-            </ul>
-            <hr>
-            <h6>YouTube 더보기</h6>
-            <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="material-icons me-2">play_circle_outline</i>
-                        YouTube 스튜디오
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="material-icons me-2">music_note</i>
-                        YouTube Music
-                    </a>
-                </li>
-            </ul>
-            <hr>
-            <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="material-icons me-2">settings</i>
-                        설정
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="material-icons me-2">flag</i>
-                        신고 기록
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="material-icons me-2">help_outline</i>
-                        고객센터
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="material-icons me-2">feedback</i>
-                        의견 보내기
-                    </a>
-                </li>
-            </ul>
-            <hr>
-            <div class="text-muted small px-3">
-                <p>
-                    © 2025 Google LLC, Sundar Pichai, 1600 Amphitheatre Parkway, Mountain View CA 94043, USA,
-                    0807-882-594 (무료), yt-support-solutions-kr@google.com, 호스팅: Google LLC, 사업자정보, 불법촬영물 신고
-                    크리에이터들이 유튜브 상에 게시, 태그 또는 추천한 상품들은 판매자들의 약관에 따라 판매됩니다. 유튜브는 이러한 제품들을 판매하지 않으며, 그에 대한 책임을 지지 않습니다</p>
+    <div class="page-container">
+        <div class="container">
+            <!-- 비디오 플레이어 구역 -->
+            <div class="video-section">
+                <div class="video-player">
+                    <iframe src="" frameborder="0" allowfullscreen></iframe>
+                    <!-- iframe에 실제 동영상 URL을 넣으세요 -->
+                </div>
             </div>
-        </div>
-    </nav>
-    <main class="main-content">
-        <div class="d-flex justify-content-between align-items-center px-4 py-3">
-            <p style="margin-top: 15px; font-size: 20px; font-weight: 1000;">최신순</p>
-            <div class="d-flex align-items-center">
-                <button class="btn btn-light me-2" type="button" style="background-color: white!important;border-radius: 33px !important;width: auto !important;padding: 8px 16px !important;">
-                    <span style= "color: blue;">관리</span>   
-                </button>
-                <button class="btn btn-light me-2" type="button" style="border-radius: 50% !important;width: 40px;height: 40px; display: flex !important;align-items: center;justify-content: center; padding: 0;">
-                    <i class="material-icons">grid_view</i>
-                </button>
-                <button class="btn btn-light" type="button" style="border-radius: 50% !important;width: 40px;height: 40px; display: flex !important;align-items: center;justify-content: center; padding: 0;">
-                    <i class="material-icons">view_list</i>
-                </button>
+
+            <!-- 영상 정보 및 액션 버튼 -->
+            <div class="video-info">
+                <div class="video-details">
+                    <h1 class="video-title">세계 첫 영상이니까</h1>
+                    <div class="channel-info">
+                        <div class="channel-avatar">
+                            <img src="randombox.png">
+                        </div>
+                        <div class="channel-details">
+                            <h3>랜덤상자</h3>
+                            <div class="subscribers">구독자 3.98만명</div>
+
+                        </div>
+                        <button class="action-btn">구독</button>
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <button class="action-btn liked">
+                        <span>👍</span> 147
+                    </button>
+                    <button class="action-btn">
+                        <span>👎</span>
+                    </button>
+                    <button class="action-btn">
+                        <span>📤</span> 공유
+                    </button>
+                    <button class="action-btn">
+                        <span>⋯</span>
+                    </button>
+                </div>
             </div>
-        </div>
 
+            <!-- 영상 설명 -->
+            <div class="video-description">
+                <div class="description-header">조회수 3.9만회 • 6개월 전 #단편 #단편애니메이터 #세계</div>
+                <div class="description-content">세계 첫 영상
 
+                    </div>
+                <div class="description-toggle">더 보기</div>
+            </div>
 
+            <!-- 댓글 섹션 -->
+            <div class="comments-section">
+                <div class="comments-header">
+                    <div class="comments-count">댓글 0개</div>
+                    <button class="sort-button">
+                        <span>⚙️</span> 정렬 기준
+                    </button>
+                </div>
 
+                <div class="comment-input">
+                    <div class="comment-avatar">
+                        <img src="useravatar.png">
+                    </div>
+                    <div class="comment-form">
+                        <input type="text" placeholder="댓글 추가...">
+                    </div>
+                </div>
 
-        <div class="container-fluid py-4" style="margin-top: -35px;">
-            <div class="row">
-                <div class="col-12 col-sm-6 col-lg-4 mb-4">
-                    <div class="video">
-                        <img src="subscriptionthumnail/thm1.png" class="img-fluid thumbnail" alt="동영상 썸네일 1">
-                        <div class="video-info">
-                            <img src="subscriptionthumnail/apple.png" class="channel-profile" alt="채널1 프로필">
-                            <div class="text-content">
-                                <div class="d-flex justify-content-between align-items-start">
-                                    <h5 class="video-title">게임 불법복제에 대한 개발자들의 귀여운 복수</h5>
-                                    <i class="material-icons more-options">more_vert</i>
-                                </div>
-                                <p class="channel-name">코딩애플</p>
-                                <p class="video-meta">조회수 5.5만회 • 21시간 전</p>
+                <div class="comments-list">
+                    <div class="comment-item">
+                        <div class="comment-avatar">K</div>
+                        <div class="comment-content">
+                            <div class="comment-author">
+                                @username-21342214
+                                <span class="comment-time">6개월 전</span>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-lg-4 mb-4">
-                    <div class="video">
-                        <img src="subscriptionthumnail/thm3.png" class="img-fluid thumbnail" alt="동영상 썸네일 2">
-                        <div class="video-info">
-                            <img src="subscriptionthumnail/apple.png" class="channel-profile" alt="코딩애플">
-                            <div class="text-content">
-                                <div class="d-flex justify-content-between align-items-start">
-                                    <h5 class="video-title">솔직히 바이브코딩 좋은듯</h5>
-                                    <i class="material-icons more-options">more_vert</i>
-                                </div>
-                                <p class="channel-name">코딩애플</p>
-                                <p class="video-meta">조회수 11만회 • 7일 전</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-lg-4 mb-4">
-                    <div class="video">
-                        <img src="subscriptionthumnail/thm2.png" class="img-fluid thumbnail" alt="동영상 썸네일 3">
-                        <div class="video-info">
-                            <img src="subscriptionthumnail/apple.png" class="channel-profile" alt="채널3 프로필">
-                            <div class="text-content">
-                                <div class="d-flex justify-content-between align-items-start">
-                                    <h5 class="video-title">진격의거인보면 네트워크 고수됨</h5>
-                                    <i class="material-icons more-options">more_vert</i>
-                                </div>
-                                <p class="channel-name">코딩애플</p>
-                                <p class="video-meta">조회수 15만회 • 3주 전</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-lg-4 mb-4">
-                    <div class="video">
-                        <img src="subscriptionthumnail/thm4.png" class="img-fluid thumbnail" alt="동영상 썸네일 4">
-                        <div class="video-info">
-                            <img src="subscriptionthumnail/apple.png" class="channel-profile" alt="채널4 프로필">
-                            <div class="text-content">
-                                <div class="d-flex justify-content-between align-items-start">
-                                    <h5 class="video-title">케로로 소대원들의 약빤 골프실력</h5>
-                                    <i class="material-icons more-options">more_vert</i>
-                                </div>
-                                <p class="channel-name">코딩애플</p>
-                                <p class="video-meta">조회수 36만회 • 4주 전</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-lg-4 mb-4">
-                    <div class="video">
-                        <img src="subscriptionthumnail/thm5.png" class="img-fluid thumbnail" alt="동영상 썸네일 5">
-                        <div class="video-info">
-                            <img src="subscriptionthumnail/apple.png" class="channel-profile" alt="채널5 프로필">
-                            <div class="text-content">
-                                <div class="d-flex justify-content-between align-items-start">
-                                    <h5 class="video-title">귀여운 오버플로우 버그는 왜 일어날까</h5>
-                                    <i class="material-icons more-options">more_vert</i>
-                                </div>
-                                <p class="channel-name">코딩애플</p>
-                                <p class="video-meta">조회수 13만회 • 1개월 전</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-lg-4 mb-4">
-                    <div class="video">
-                        <img src="subscriptionthumnail/thm6.png" class="img-fluid thumbnail" alt="동영상 썸네일 6">
-                        <div class="video-info">
-                            <img src="subscriptionthumnail/apple.png" class="channel-profile" alt="채널6 프로필">
-                            <div class="text-content">
-                                <div class="d-flex justify-content-between align-items-start">
-                                    <h5 class="video-title">바퀴 때문에 사람이 도망간 집!! 바퀴벌레 서식지 파괴 했습니다.</h5>
-                                    <i class="material-icons more-options">more_vert</i>
-                                </div>
-                                <p class="channel-name">코딩애플</p>
-                                <p class="video-meta">조회수 15만회 • 1개월 전</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-lg-4 mb-4">
-                    <div class="video">
-                        <img src="subscriptionthumnail/thm7.png" class="img-fluid thumbnail" alt="동영상 썸네일 7">
-                        <div class="video-info">
-                            <img src="subscriptionthumnail/apple.png" class="channel-profile" alt="채널7 프로필">
-                            <div class="text-content">
-                                <div class="d-flex justify-content-between align-items-start">
-                                    <h5 class="video-title">링크 하나로 진짜 개인정보를 '털'수 있을까</h5>
-                                    <i class="material-icons more-options">more_vert</i>
-                                </div>
-                                <p class="channel-name">코딩애플</p>
-                                <p class="video-meta">조회수 13만회 • 1개월 전</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-lg-4 mb-4">
-                    <div class="video">
-                        <img src="subscriptionthumnail/thm8.png" class="img-fluid thumbnail" alt="동영상 썸네일 8">
-                        <div class="video-info">
-                            <img src="subscriptionthumnail/ren.png" class="channel-profile" alt="채널8 프로필">
-                            <div class="text-content">
-                                <div class="d-flex justify-content-between align-items-start">
-                                    <h5 class="video-title">れん ONEMAN LIVE TOUR 2025 - Molt - Teaser</h5>
-                                    <i class="material-icons more-options">more_vert</i>
-                                </div>
-                                <p class="channel-name">れん</p>
-                                <p class="video-meta">조회수 1.3만회 • 1개월 전</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-lg-4 mb-4">
-                    <div class="video">
-                        <img src="subscriptionthumnail/thm9.png" class="img-fluid thumbnail" alt="동영상 썸네일 9">
-                        <div class="video-info">
-                            <img src="subscriptionthumnail/ren.png" class="channel-profile" alt="채널9 프로필">
-                            <div class="text-content">
-                                <div class="d-flex justify-content-between align-items-start">
-                                    <h5 class="video-title">れん - 盾愛 (Music Video)</h5>
-                                    <i class="material-icons more-options">more_vert</i>
-                                </div>
-                                <p class="channel-name">れん</p>
-                                <p class="video-meta">조회수 21만회 • 1개월 전</p>
+                            <div class="comment-text">댓글</div>
+                            <div class="comment-actions">
+                                <button>👍</button>
+                                <button>👎</button>
+                                <button>💬 답글</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
 
+        <aside class="sidebar">
+            <div class="video-list">
+                <div class="video-item">
+                    <div class="thumbnail-container">
+                        <img src="sidebarthm1.png" alt="영상 썸네일" class="thumbnail">
+                    </div>
+                    <div class="video-info">
+                        <div class="video-header">
+                            <h3 class="video-title">아가 가장될 리기로서? 만우절 기념 성역의 결과</h3>
+                            <button class="more-options">⋮</button>
+                        </div>
+                        <div class="video-meta">
+                            <div class="channel-name">렌당상자</div>
+                            <div class="video-stats">조회수 4.1만회 • 3개월 전</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-item">
+                    <div class="thumbnail-container">
+                        <img src="sidebarthm2.png" alt="영상 썸네일" class="thumbnail">
+                    </div>
+                    <div class="video-info">
+                        <div class="video-header">
+                            <h3 class="video-title">삼성 X  콜라보 들은 은.. 다?</h3>
+                            <button class="more-options">⋮</button>
+                        </div>
+                        <div class="video-meta">
+                            <div class="channel-name">하타치 Hatachi</div>
+                            <div class="video-stats">조회수 4.7만회 • 1년 전</div>
+                        </div>
+                    </div>
+                </div>
+        </aside>
+    </div>
+
+
+    <script>
+       
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
