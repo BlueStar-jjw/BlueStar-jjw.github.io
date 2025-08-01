@@ -25,11 +25,74 @@
             min-width: 0;
         }
 
-        /* 우측 사이드 바 구역 */
+        .page-container {
+            display: flex;
+            gap: 24px;
+            max-width: 1920px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-        @media (max-width: 1000px) {
+
+
+        @media (max-width: 991px) {
+            .page-container {
+                display: block;
+            }
+
+            .container {
+                margin-left: 0;
+            }
+
             .sidebar {
+                position: static;
+                width: 100%;
+                margin-top: 20px;
+                border-right: none;
+                background-color: transparent;
+                padding-top: 0;
+            }
+
+            .comments-section {
                 display: none;
+            }
+        }
+
+        @media (min-width: 992px)
+        /* 992px은 bootstrap에서 큰 장치의 표춘값 */
+            {
+            .sidebar-pc
+
+            /* 큰 화면에서 사이드 바 스타일 */
+                {
+                position: fixed;
+                top: 56px;
+                left: 0;
+                bottom: 0;
+                z-index: 1000;
+                width: 240px;
+                padding-top: 1rem;
+                overflow-y: auto;
+                background-color: #f8f9fa;
+                border-right: 1px solid #e9ecef;
+            }
+
+            .main-content {
+                margin-left: 240px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .search-container {
+                max-width: none;
+            }
+
+            .search-form {
+                max-width: none;
+            }
+
+            .mic-btn {
+                margin-left: 8px;
             }
         }
 
@@ -246,6 +309,7 @@
             line-height: 1.4;
             white-space: pre-line;
         }
+
         #description-content {
             white-space: pre-line;
         }
@@ -369,55 +433,11 @@
             color: rgb(146, 125, 125);
         }
 
-        .page-container {
-            display: flex;
-            gap: 24px;
-            max-width: 1920px;
-            margin: 0 auto;
-            padding: 20px;
-        }
 
 
 
-        /* 브라우저 크기에 따른 디자인을 하기위해 미디어 쿼리 사용 */
-        @media (min-width: 992px)
-        /* 브라우저 크기가 992px 이하일때 아래의 스타일 적용 */
-        /* 992px은 bootstrap에서 큰 장치의 표춘값 */
-            {
-            .sidebar-pc
 
-            /* 큰 화면에서 사이드 바 스타일 */
-                {
-                position: fixed;
-                top: 56px;
-                left: 0;
-                bottom: 0;
-                z-index: 1000;
-                width: 240px;
-                padding-top: 1rem;
-                overflow-y: auto;
-                background-color: #f8f9fa;
-                border-right: 1px solid #e9ecef;
-            }
 
-            .main-content {
-                margin-left: 240px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .search-container {
-                max-width: none;
-            }
-
-            .search-form {
-                max-width: none;
-            }
-
-            .mic-btn {
-                margin-left: 8px;
-            }
-        }
 
 
         .offcanvas
@@ -1002,8 +1022,8 @@
 
 
             <div class="video-description">
-                <div class="description-header" id = "description-header">description-header</div>
-                <div class="description-content" id = "description-content">text</div>
+                <div class="description-header" id="description-header">description-header</div>
+                <div class="description-content" id="description-content">text</div>
                 <div class="description-toggle" style="margin-top: 30px;">더 보기</div>
             </div>
 
@@ -1053,11 +1073,11 @@
                     </div>
                     <div class="video-info">
                         <div class="video-header">
-                            <h3 class="video-title">아가 가장될 리기로서? 만우절 기념 성역의 결과</h3>
+                            <h3 class="video-title">만우절 기념 성역의 결과</h3>
                             <button class="more-options">⋮</button>
                         </div>
                         <div class="video-meta">
-                            <div class="channel-name">렌당상자</div>
+                            <div class="channel-name">랜덤상자</div>
                             <div class="video-stats">조회수 4.1만회 • 3개월 전</div>
                         </div>
                     </div>
@@ -1069,7 +1089,7 @@
                     </div>
                     <div class="video-info">
                         <div class="video-header">
-                            <h3 class="video-title">삼성 X  콜라보 들은 은.. 다?</h3>
+                            <h3 class="video-title">삼성 X ??? 콜라보 온다?</h3>
                             <button class="more-options">⋮</button>
                         </div>
                         <div class="video-meta">
@@ -1083,18 +1103,18 @@
 
 
     <script>
-       const videoSources = {
+        const videoSources = {
             1: "https://www.youtube.com/embed/I2ucpR5OSxw?si=uvoTWqJtwvu3ko-f",
             2: "https://www.youtube.com/embed/tuH1ZTl9s9Q?si=KcddzYIDeg8Zv4Ie",
             3: "https://www.youtube.com/embed/LtvPRQuw81Y?si=HT4Qv63wDGR6y5Fu",
-            4:"https://www.youtube.com/embed/Z6wOmix2J98?si=Df4RAz8gNXRlK8mT",
-            5:"https://www.youtube.com/embed/MvXCCOUjdVw?si=QOlLpWY_qjPtHyHk",
-            6:"https://www.youtube.com/embed/raI-EZjKEqE?si=3N2zC0FOsRVYnbn_",
-            7:"https://www.youtube.com/embed/tbPnZAPN8kc?si=1x6BxefwUoNS_Yqz",
-            8:"https://www.youtube.com/embed/9vkwS3Y9ghI?si=pD6s8iPWh5hiSwRQ",
-            9:"https://www.youtube.com/embed/UOSd9M3Xnz8?si=ca9QQy47Dolssy_6"
+            4: "https://www.youtube.com/embed/Z6wOmix2J98?si=Df4RAz8gNXRlK8mT",
+            5: "https://www.youtube.com/embed/MvXCCOUjdVw?si=QOlLpWY_qjPtHyHk",
+            6: "https://www.youtube.com/embed/raI-EZjKEqE?si=3N2zC0FOsRVYnbn_",
+            7: "https://www.youtube.com/embed/tbPnZAPN8kc?si=1x6BxefwUoNS_Yqz",
+            8: "https://www.youtube.com/embed/9vkwS3Y9ghI?si=pD6s8iPWh5hiSwRQ",
+            9: "https://www.youtube.com/embed/UOSd9M3Xnz8?si=ca9QQy47Dolssy_6"
         };
-        
+
         const videoTitles = {
             1: "도움을 줄 수 있음이 뭐에요?",
             2: "솔직히 바이브코딩 좋은듯",
@@ -1120,51 +1140,51 @@
         };
 
         const name = {
-            1 : "동공이약사",
-            2 : "코딩애플",
-            3 : "코딩애플",
-            4:"추추",
-            5:"마법소년 김셰프",
-            6:"국가대표 쩔템",
-            7:"옥선생",
-            8:"입질의추억TV",
-            9:"육식맨 YOOXICMAN"
+            1: "동공이약사",
+            2: "코딩애플",
+            3: "코딩애플",
+            4: "추추",
+            5: "마법소년 김셰프",
+            6: "국가대표 쩔템",
+            7: "옥선생",
+            8: "입질의추억TV",
+            9: "육식맨 YOOXICMAN"
         };
 
         const sub = {
-            1 : "28.7만명",
-            2 : "38.4만명",
-            3 : "38.4만명",
-            4:"2.87천명",
-            5:"53.8만명",
-            6:"44.2만명",
-            7:"4.8만명",
-            8:"128만명",
-            9:"135만명"
+            1: "28.7만명",
+            2: "38.4만명",
+            3: "38.4만명",
+            4: "2.87천명",
+            5: "53.8만명",
+            6: "44.2만명",
+            7: "4.8만명",
+            8: "128만명",
+            9: "135만명"
         };
 
         const descriptionHeader = {
-            1 : "조회수 4.5만회  1개월 전",
-            2 : "조회수 16만회  2주 전",
-            3 : "조회수 15만회  1개월 전",
-            4:"조회쉬 8.9만회  5개월 전",
-            5:"조회수 5만회  4개월 전",
-            6:"조회수 65만회  4개월 전",
-            7:"조회수 4.8만회  2개월 전",
-            8:"조회수 48만회  13일 전",
-            9:"조회수 153만회  6개월 전"
+            1: "조회수 4.5만회  1개월 전",
+            2: "조회수 16만회  2주 전",
+            3: "조회수 15만회  1개월 전",
+            4: "조회쉬 8.9만회  5개월 전",
+            5: "조회수 5만회  4개월 전",
+            6: "조회수 65만회  4개월 전",
+            7: "조회수 4.8만회  2개월 전",
+            8: "조회수 48만회  13일 전",
+            9: "조회수 153만회  6개월 전"
         };
 
         const descriptionContent = {
-            1 : "[공익 캠페인] 공간과나눔 X 약간 헷갈리면 약국\n본 콘텐츠는 사단법인 공간과나눔의 공익 캠페인 후원으로 제작되었습니다.",
-            2 : "근데 멍청해지는 느낌",
-            3 : "6개월이 지났습니다.\n 비밀번호를 변경 하세요",
-            4:"케로로 소대원들의 약빤 골프 실력",
-            5:"밥김국",
-            6:"쩔템입니다. 으하하 \n바퀴벌레 퇴치엔 ~~~",
-            7:"멘징보꾸만아저씨 출동",
-            8:"뭔지도 모르는데 어떻게 먹어요",
-            9:"영국은 역시 영국"
+            1: "[공익 캠페인] 공간과나눔 X 약간 헷갈리면 약국\n본 콘텐츠는 사단법인 공간과나눔의 공익 캠페인 후원으로 제작되었습니다.",
+            2: "근데 멍청해지는 느낌",
+            3: "6개월이 지났습니다.\n 비밀번호를 변경 하세요",
+            4: "케로로 소대원들의 약빤 골프 실력",
+            5: "밥김국",
+            6: "쩔템입니다. 으하하 \n바퀴벌레 퇴치엔 ~~~",
+            7: "멘징보꾸만아저씨 출동",
+            8: "뭔지도 모르는데 어떻게 먹어요",
+            9: "영국은 역시 영국"
         };
 
         // URL에서 videoid 파라미터 읽기
@@ -1185,7 +1205,7 @@
             if (src) {
                 document.getElementById('video-iframe').src = src;
                 document.getElementById('video-title').textContent = title;
-                document.getElementById('avatar').src = channelavatar; 
+                document.getElementById('avatar').src = channelavatar;
                 document.getElementById('channel-name').textContent = channelname;
                 document.getElementById('subscribers').textContent = subscribers;
                 document.getElementById('description-header').textContent = descriptionheader;
@@ -1193,7 +1213,7 @@
             }
         }
         // 페이지 로드시 videoid 확인하고 동영상 로드
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             const videoId = getVideoId();
             if (videoId) {
                 loadVideo(videoId);
