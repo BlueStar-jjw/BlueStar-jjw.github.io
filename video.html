@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>clonetube homepage</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <style>
@@ -245,16 +246,8 @@
             line-height: 1.4;
             white-space: pre-line;
         }
-
-        .description-toggle {
-            color: black;
-            cursor: pointer;
-            font-size: 14px;
-            margin-top: 8px;
-        }
-
-        .description-toggle:hover {
-            color: black;
+        #description-content {
+            white-space: pre-line;
         }
 
         /* 댓글 구역 */
@@ -286,7 +279,7 @@
         }
 
         .sort-button:hover {
-            color: black;
+            color: gray;
         }
 
         .comment-input {
@@ -315,7 +308,7 @@
             width: 100%;
             background: transparent;
             border: none;
-            border-bottom: 1px solid #3d3d3d;
+            border-bottom: 0.1px solid #3d3d3d;
             color: black;
             padding: 8px 0;
             font-size: 14px;
@@ -323,7 +316,8 @@
 
         .comment-form input:focus {
             outline: none;
-            border-bottom-color: #065fd4;
+            border-bottom: 2px solid black;
+
         }
 
         .comment-item {
@@ -970,22 +964,21 @@
             <!-- 비디오 플레이어 구역 -->
             <div class="video-section">
                 <div class="video-player">
-                    <iframe src="" frameborder="0" allowfullscreen></iframe>
-                    <!-- iframe에 실제 동영상 URL을 넣으세요 -->
+                    <iframe id="video-iframe" src="" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
 
             <!-- 영상 정보 및 액션 버튼 -->
             <div class="video-info">
                 <div class="video-details">
-                    <h1 class="video-title">세계 첫 영상이니까</h1>
+                    <h1 class="video-title" id="video-title">video title</h1>
                     <div class="channel-info">
                         <div class="channel-avatar">
-                            <img src="randombox.png">
+                            <img id="avatar" src="">
                         </div>
                         <div class="channel-details">
-                            <h3>랜덤상자</h3>
-                            <div class="subscribers">구독자 3.98만명</div>
+                            <h3 id="channel-name">channel name</h3>
+                            <div class="subscribers" id="subscribers">subscribers</div>
 
                         </div>
                         <button class="action-btn">구독</button>
@@ -993,7 +986,7 @@
                 </div>
                 <div class="action-buttons">
                     <button class="action-btn liked">
-                        <span>👍</span> 147
+                        <span class="material-icons">thumb_up</span> 147
                     </button>
                     <button class="action-btn">
                         <span>👎</span>
@@ -1007,16 +1000,14 @@
                 </div>
             </div>
 
-            <!-- 영상 설명 -->
-            <div class="video-description">
-                <div class="description-header">조회수 3.9만회 • 6개월 전 #단편 #단편애니메이터 #세계</div>
-                <div class="description-content">세계 첫 영상
 
-                    </div>
-                <div class="description-toggle">더 보기</div>
+            <div class="video-description">
+                <div class="description-header" id = "description-header">description-header</div>
+                <div class="description-content" id = "description-content">text</div>
+                <div class="description-toggle" style="margin-top: 30px;">더 보기</div>
             </div>
 
-            <!-- 댓글 섹션 -->
+
             <div class="comments-section">
                 <div class="comments-header">
                     <div class="comments-count">댓글 0개</div>
@@ -1040,7 +1031,7 @@
                         <div class="comment-content">
                             <div class="comment-author">
                                 @username-21342214
-                                <span class="comment-time">6개월 전</span>
+                                <span class="comment-time">1개월 전</span>
                             </div>
                             <div class="comment-text">댓글</div>
                             <div class="comment-actions">
@@ -1092,7 +1083,122 @@
 
 
     <script>
-       
+       const videoSources = {
+            1: "https://www.youtube.com/embed/I2ucpR5OSxw?si=uvoTWqJtwvu3ko-f",
+            2: "https://www.youtube.com/embed/tuH1ZTl9s9Q?si=KcddzYIDeg8Zv4Ie",
+            3: "https://www.youtube.com/embed/LtvPRQuw81Y?si=HT4Qv63wDGR6y5Fu",
+            4:"https://www.youtube.com/embed/Z6wOmix2J98?si=Df4RAz8gNXRlK8mT",
+            5:"https://www.youtube.com/embed/MvXCCOUjdVw?si=QOlLpWY_qjPtHyHk",
+            6:"https://www.youtube.com/embed/raI-EZjKEqE?si=3N2zC0FOsRVYnbn_",
+            7:"https://www.youtube.com/embed/tbPnZAPN8kc?si=1x6BxefwUoNS_Yqz",
+            8:"https://www.youtube.com/embed/9vkwS3Y9ghI?si=pD6s8iPWh5hiSwRQ",
+            9:"https://www.youtube.com/embed/UOSd9M3Xnz8?si=ca9QQy47Dolssy_6"
+        };
+        
+        const videoTitles = {
+            1: "도움을 줄 수 있음이 뭐에요?",
+            2: "솔직히 바이브코딩 좋은듯",
+            3: "한국에만 있는 이상한 비밀번호 관리법",
+            4: "케로로 소대원들의 약빤 골프 실력",
+            5: "장어 덮밥을 심층으로 분석 해봤습니다. 이 영상을 보시면 당신도 장덮밥김구르망이 될 수 있습니다.",
+            6: "바퀴 때문에 사람이 도망간 집 !! 바퀴벌레 서식지 파괴 했습니다.",
+            7: "아무튼 자무기 먹었습니다!!! 세팅 갑니다!!!",
+            8: "몰라서 안 사먹었더니 가격이 박살나고 있는 여름 보양식",
+            9: "영국 육식 탐방기 : 억지 괴식 말고 '진짜' 영국의 맛"
+        };
+
+        const avatar = {
+            1: "mainhomethumnail/동공이약사.png",
+            2: "mainhomethumnail/코딩애플.png",
+            3: "mainhomethumnail/코딩애플.png",
+            4: "mainhomethumnail/추추.png",
+            5: "mainhomethumnail/마소킴.png",
+            6: "mainhomethumnail/쩔템.png",
+            7: "mainhomethumnail/옥선생.png",
+            8: "mainhomethumnail/입질의추억.png",
+            9: "mainhomethumnail/meatman.png"
+        };
+
+        const name = {
+            1 : "동공이약사",
+            2 : "코딩애플",
+            3 : "코딩애플",
+            4:"추추",
+            5:"마법소년 김셰프",
+            6:"국가대표 쩔템",
+            7:"옥선생",
+            8:"입질의추억TV",
+            9:"육식맨 YOOXICMAN"
+        };
+
+        const sub = {
+            1 : "28.7만명",
+            2 : "38.4만명",
+            3 : "38.4만명",
+            4:"2.87천명",
+            5:"53.8만명",
+            6:"44.2만명",
+            7:"4.8만명",
+            8:"128만명",
+            9:"135만명"
+        };
+
+        const descriptionHeader = {
+            1 : "조회수 4.5만회  1개월 전",
+            2 : "조회수 16만회  2주 전",
+            3 : "조회수 15만회  1개월 전",
+            4:"조회쉬 8.9만회  5개월 전",
+            5:"조회수 5만회  4개월 전",
+            6:"조회수 65만회  4개월 전",
+            7:"조회수 4.8만회  2개월 전",
+            8:"조회수 48만회  13일 전",
+            9:"조회수 153만회  6개월 전"
+        };
+
+        const descriptionContent = {
+            1 : "[공익 캠페인] 공간과나눔 X 약간 헷갈리면 약국\n본 콘텐츠는 사단법인 공간과나눔의 공익 캠페인 후원으로 제작되었습니다.",
+            2 : "근데 멍청해지는 느낌",
+            3 : "6개월이 지났습니다.\n 비밀번호를 변경 하세요",
+            4:"케로로 소대원들의 약빤 골프 실력",
+            5:"밥김국",
+            6:"쩔템입니다. 으하하 \n바퀴벌레 퇴치엔 ~~~",
+            7:"멘징보꾸만아저씨 출동",
+            8:"뭔지도 모르는데 어떻게 먹어요",
+            9:"영국은 역시 영국"
+        };
+
+        // URL에서 videoid 파라미터 읽기
+        function getVideoId() {
+            const params = new URLSearchParams(window.location.search);
+            return params.get('videoid');
+        }
+
+        // 동영상 로드
+        function loadVideo(videoId) {
+            const src = videoSources[videoId];
+            const title = videoTitles[videoId];
+            const channelavatar = avatar[videoId];
+            const channelname = name[videoId];
+            const subscribers = sub[videoId];
+            const descriptioncontent = descriptionContent[videoId];
+            const descriptionheader = descriptionHeader[videoId];
+            if (src) {
+                document.getElementById('video-iframe').src = src;
+                document.getElementById('video-title').textContent = title;
+                document.getElementById('avatar').src = channelavatar; 
+                document.getElementById('channel-name').textContent = channelname;
+                document.getElementById('subscribers').textContent = subscribers;
+                document.getElementById('description-header').textContent = descriptionheader;
+                document.getElementById('description-content').textContent = descriptioncontent;
+            }
+        }
+        // 페이지 로드시 videoid 확인하고 동영상 로드
+        window.addEventListener('load', function() {
+            const videoId = getVideoId();
+            if (videoId) {
+                loadVideo(videoId);
+            }
+        });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

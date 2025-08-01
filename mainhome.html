@@ -789,7 +789,7 @@
         <div class="container-fluid py-4">
             <div class="row">
                 <div class="col-12 col-sm-6 col-lg-4 mb-4">
-                    <div class="video">
+                    <div class="video" onclick="goToVideo(1)">
                         <img src="mainhomethumnail/whatis.png" class="img-fluid thumbnail" alt="동영상 썸네일 1">
                         <div class="video-info">
                             <img src="mainhomethumnail/동공이약사.png" class="channel-profile" alt="채널1 프로필">
@@ -805,7 +805,7 @@
                     </div>
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 mb-4">
-                    <div class="video">
+                    <div class="video" onclick="goToVideo(2)">
                         <img src="mainhomethumnail/vibecoding.png" class="img-fluid thumbnail" alt="동영상 썸네일 2">
                         <div class="video-info">
                             <img src="mainhomethumnail/코딩애플.png" class="channel-profile" alt="코딩애플">
@@ -821,7 +821,7 @@
                     </div>
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 mb-4">
-                    <div class="video">
+                    <div class="video" onclick="goToVideo(3)">
                         <img src="mainhomethumnail/changepw.png" class="img-fluid thumbnail" alt="동영상 썸네일 3">
                         <div class="video-info">
                             <img src="mainhomethumnail/코딩애플.png" class="channel-profile" alt="채널3 프로필">
@@ -837,7 +837,7 @@
                     </div>
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 mb-4">
-                    <div class="video">
+                    <div class="video" onclick="goToVideo(4)">
                         <img src="mainhomethumnail/keroro.png" class="img-fluid thumbnail" alt="동영상 썸네일 4">
                         <div class="video-info">
                             <img src="mainhomethumnail/추추.png" class="channel-profile" alt="채널4 프로필">
@@ -853,7 +853,7 @@
                     </div>
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 mb-4">
-                    <div class="video">
+                    <div class="video" onclick="goToVideo(5)">
                         <img src="mainhomethumnail/babkimkuk.png" class="img-fluid thumbnail" alt="동영상 썸네일 5">
                         <div class="video-info">
                             <img src="mainhomethumnail/마소킴.png" class="channel-profile" alt="채널5 프로필">
@@ -869,7 +869,7 @@
                     </div>
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 mb-4">
-                    <div class="video">
+                    <div class="video" onclick="goToVideo(6)">
                         <img src="mainhomethumnail/바퀴.png" class="img-fluid thumbnail" alt="동영상 썸네일 6">
                         <div class="video-info">
                             <img src="mainhomethumnail/쩔템.png" class="channel-profile" alt="채널6 프로필">
@@ -885,7 +885,7 @@
                     </div>
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 mb-4">
-                    <div class="video">
+                    <div class="video" onclick="goToVideo(7)">
                         <img src="mainhomethumnail/nenmaster.png" class="img-fluid thumbnail" alt="동영상 썸네일 7">
                         <div class="video-info">
                             <img src="mainhomethumnail/옥선생.png" class="channel-profile" alt="채널7 프로필">
@@ -901,7 +901,7 @@
                     </div>
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 mb-4">
-                    <div class="video">
+                    <div class="video" onclick="goToVideo(8)">
                         <img src="mainhomethumnail/입질썸네일1.png" class="img-fluid thumbnail" alt="동영상 썸네일 8">
                         <div class="video-info">
                             <img src="mainhomethumnail/입질의추억.png" class="channel-profile" alt="채널8 프로필">
@@ -917,7 +917,7 @@
                     </div>
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 mb-4">
-                    <div class="video">
+                    <div class="video" onclick="goToVideo(9)">
                         <img src="mainhomethumnail/enmeat.png" class="img-fluid thumbnail" alt="동영상 썸네일 9">
                         <div class="video-info">
                             <img src="mainhomethumnail/meatman.png" class="channel-profile" alt="채널9 프로필">
@@ -935,6 +935,12 @@
             </div>
         </div>
     </main>
+
+    <script>
+        function goToVideo(videoId) {
+            window.location.href = `video.html?videoid=${videoId}`;
+        }
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
