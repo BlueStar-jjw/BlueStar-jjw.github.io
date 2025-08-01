@@ -1041,11 +1041,12 @@
                         <img src="useravatar.png">
                     </div>
                     <div class="comment-form">
-                        <input type="text" placeholder="댓글 추가...">
+                        <input type="text" id="comment-text" placeholder="댓글 추가...">
+                        <button class="action-btn" id="submit-comment">등록</button>
                     </div>
                 </div>
 
-                <div class="comments-list">
+                <div class="comments-list" id="comments-list">
                     <div class="comment-item">
                         <div class="comment-avatar">K</div>
                         <div class="comment-content">
@@ -1103,6 +1104,9 @@
 
 
     <script>
+
+
+
         const videoSources = {
             1: "https://www.youtube.com/embed/I2ucpR5OSxw?si=uvoTWqJtwvu3ko-f",
             2: "https://www.youtube.com/embed/tuH1ZTl9s9Q?si=KcddzYIDeg8Zv4Ie",
@@ -1213,10 +1217,37 @@
             }
         }
         // 페이지 로드시 videoid 확인하고 동영상 로드
-        window.addEventListener('load', function () {
+        window.addEventListener("DOMContentLoaded", function () {
             const videoId = getVideoId();
             if (videoId) {
                 loadVideo(videoId);
+            }
+        });
+
+        document.getElementById('submit-comment').addEventListener('click', () => {
+            const input = document.getElementById('comment-text');
+            const commentText = input.value.trim();
+
+            if (commentText !== '') {
+                const commentHTML = `
+                    <div class="comment-item">
+                        <div class="comment-avatar">U</div>
+                        <div class="comment-content">
+                            <div class="comment-author">
+                                @guest<span class="comment-time">방금 전</span>
+                            </div>
+                            <div class="comment-text">${commentText}</div>
+                            <div class="comment-actions">
+                                <button>👍</button>
+                                <button>👎</button>
+                                <button>💬 답글</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                document.getElementById('comments-list').insertAdjacentHTML('beforeend', commentHTML);
+                input.value = '';
             }
         });
     </script>
